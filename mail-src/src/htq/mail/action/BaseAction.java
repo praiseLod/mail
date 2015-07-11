@@ -1,5 +1,6 @@
 package htq.mail.action;
 
+
 /**
  * 基础控制类
  * @author PraiseLod
@@ -7,6 +8,5 @@ package htq.mail.action;
  *
  */
 public abstract class BaseAction {
-	public static void main(String[] args) {
-	}
+	
 }

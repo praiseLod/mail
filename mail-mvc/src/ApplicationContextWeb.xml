@@ -5,7 +5,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<!-- 开启注释 -->
-	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+	<context:component-scan base-package="htq.mail.action"></context:component-scan>
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor">
+		<property name="autowiredAnnotationType" value="org.springframework.stereotype.Controller"></property>
+	</bean> -->
 
 	<!-- <bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -46,5 +49,5 @@
 		</property>
 	</bean>
 	
-	<import resource="classpath:spring/ControllerBean.xml" />
+	<import resource="classpath:config/bean/ControllerBean.xml" />
 </beans>

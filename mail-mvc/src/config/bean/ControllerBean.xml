@@ -4,4 +4,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<description>web 控制器</description>
+	<bean id="logoAction" class="htq.mail.action.LogonAction"></bean>
 </beans>
