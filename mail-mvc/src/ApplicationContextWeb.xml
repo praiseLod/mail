@@ -1,43 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-
-	<!-- 开启注释 -->
-	<context:component-scan base-package="htq.mail.action"></context:component-scan>
-	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor">
-		<property name="autowiredAnnotationType" value="org.springframework.stereotype.Controller"></property>
-	</bean> -->
-
-	<!-- <bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		JstlView表示JSP模板页面需要使用JSTL标签库，classpath中必须包含jstl的相关jar包
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
-		将收到的逻辑视图进行封装，形成最后的实际视图 如： 传过来的逻辑视图为：index。则经过这里的封装后就变成了 /WEB-INF/jsp/index.jsp 
-			这个有着实际路径的视图
-		<property name="prefix" value="/WEB-INF/jsps/" />
-		<property name="suffix" value=".vm" />
-	</bean> -->
-	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-		<property name="cache" value="false"></property>
-    <!--是否缓存模板-->
-    <property name="order" value="10" />
-    <property name="suffix" value=".vm" />
-    <property name="prefix" value="/WEB-INF/view/" />
-    <!-- <property name="layoutUrl" value="layout/default.vm" /> -->
-    <property name="exposeSpringMacroHelpers" value="true" />
-    <property name="dateToolAttribute" value="dateTool" />
-    <property name="numberToolAttribute" value="numberTool" />
-    <property name="toolboxConfigLocation" value="velocity-tools.xml" />
-    <property name="contentType" value="text/html;charset=UTF-8"></property>
-	</bean>
-	
+	<!-- 开启AutoWrie注解 -->
 	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+
+	<bean id="velocityConfigurer"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/view/" />
+	 	<property name="configLocation" value="classpath:velocity.properties" /> 
 	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="cache" value="false"></property>
+		<!-- <property name="prefix" value="/WEB-INF/view/"></property> -->
+		<property name="suffix" value=".vm" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="dateToolAttribute" value="dateTool" />
+		<property name="numberToolAttribute" value="numberTool" />
+		<!-- <property name="toolboxConfigLocation" value="velocity-tools.xml" /> -->
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+	    <property name="exposeRequestAttributes" value="true" /><!--是否开放request属性 -->
+        <property name="requestContextAttribute" value="request" /><!--request属性引用名称 -->
+        <!--<property name="viewClass" value="vsm_demo.utils.MyVelocityToolBoxView"></property>少了这个似乎无法这定制自己的工具-->
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
 
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
@@ -49,5 +42,13 @@
 		</property>
 	</bean>
 	
+	<!-- 开启文件上传功能 要添加 appache 下的fileupload,与io两个包。 文件多段上传设置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="10003300" />
+		<property name="maxInMemorySize" value="10240" />
+	</bean>
+
 	<import resource="classpath:config/bean/ControllerBean.xml" />
 </beans>

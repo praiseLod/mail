@@ -1,26 +1,16 @@
-package htq.mail.action;
+package config.bean;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * 登录
- * @author PraiseLod
- * @date 2015年7月8日
- *
- */
-@Controller
 @RequestMapping("/test")
-public class LogonAction extends BaseAction {
-	
+public class Controler {
 	@RequestMapping("index.htm")
 	public String index(HttpServletRequest request,HttpServletResponse response){
 		ModelAndView vm = new ModelAndView("index");
 		return "index";
 	}
-	
 }

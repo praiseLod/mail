@@ -3,7 +3,6 @@
 	<name>mail-mvc</name>
 	<comment></comment>
 	<projects>
-		<project>mail-src</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
