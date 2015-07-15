@@ -12,7 +12,7 @@
 	<bean id="velocityConfigurer"
 		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
 		<property name="resourceLoaderPath" value="/WEB-INF/view/" />
-	 	<property name="configLocation" value="classpath:velocity.properties" /> 
+	 	<property name="configLocation" value="/WEB-INF/config/velocity.properties" /> 
 	</bean>
 
 	<bean id="viewResolver"
@@ -50,5 +50,5 @@
 		<property name="maxInMemorySize" value="10240" />
 	</bean>
 
-	<import resource="classpath:config/bean/ControllerBean.xml" />
+	<import resource="bean/ControllerBean.xml" />
 </beans>
