@@ -23,7 +23,7 @@
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<property name="dateToolAttribute" value="dateTool" />
 		<property name="numberToolAttribute" value="numberTool" />
-		<property name="toolboxConfigLocation" value="/WEB-INF/velocityTools.xml" />
+		<property name="toolboxConfigLocation" value="/WEB-INF/config/velocityTools.xml" />
 		<property name="contentType" value="text/html;charset=UTF-8"></property>
 	    <property name="exposeRequestAttributes" value="true" /><!--是否开放request属性 -->
         <property name="requestContextAttribute" value="request" /><!--request属性引用名称 -->
