@@ -18,7 +18,7 @@ public class LogonAction extends BaseAction {
 	@RequestMapping("index.htm")
 	public String index(HttpServletRequest request,HttpServletResponse response){
 		ModelAndView vm = new ModelAndView("index");
-		return "index";
+		return "test";
 	}
 	
 }
