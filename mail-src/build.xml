@@ -66,6 +66,7 @@
 			<fileset dir="bin">
 			</fileset>
 		</jar>
+		<delete dir="bin"/>
 	</target>
 
 </project>
