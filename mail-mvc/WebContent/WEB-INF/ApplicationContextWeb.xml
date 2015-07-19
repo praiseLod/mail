@@ -12,22 +12,23 @@
 	<bean id="velocityConfigurer"
 		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
 		<property name="resourceLoaderPath" value="/WEB-INF/view/" />
-	 	<property name="configLocation" value="/WEB-INF/config/velocity.properties" /> 
+	 	<property name="configLocation" value="/WEB-INF/velocity.properties" /> 
 	</bean>
 
 	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
 		<property name="cache" value="false"></property>
 		<!-- <property name="prefix" value="/WEB-INF/view/"></property> -->
 		<property name="suffix" value=".vm" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<property name="dateToolAttribute" value="dateTool" />
 		<property name="numberToolAttribute" value="numberTool" />
-		<property name="toolboxConfigLocation" value="/WEB-INF/config/velocityTools.xml" />
+		<property name="toolboxConfigLocation" value="/WEB-INF/velocityTools.xml" />
 		<property name="contentType" value="text/html;charset=UTF-8"></property>
 	    <property name="exposeRequestAttributes" value="true" /><!--是否开放request属性 -->
         <property name="requestContextAttribute" value="request" /><!--request属性引用名称 -->
-        <property name="viewClass" value="htq.mail.core.customize.VelocityToolBoxExt"></property>
+        <property name="viewClass" value="htq.mail.core.customize.VelocityLayoutViewExt"></property>
+        <property name="layoutUrl" value="layout/general.vm"/>
 	</bean>
 
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
@@ -50,5 +51,5 @@
 		<property name="maxInMemorySize" value="10240" />
 	</bean>
 
-	<import resource="bean/ControllerBean.xml" />
+	<import resource="config/ControllerBean.xml" />
 </beans>

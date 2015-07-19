@@ -15,7 +15,7 @@
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>/WEB-INF/config/db.properties</value>
+				<value>/WEB-INF/app.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -47,7 +47,7 @@
 	</aop:config>
 	<aop:aspectj-autoproxy proxy-target-class="true" />
  -->
-	<import resource="bean/DaoBean.xml"/>
-	<import resource="bean/ServiceBean.xml" />
-	<import resource="bean/SystemBean.xml" /> 
+	<import resource="config/DaoBean.xml"/>
+	<import resource="config/ServiceBean.xml" />
+	<import resource="config/SystemBean.xml" /> 
 </beans>
